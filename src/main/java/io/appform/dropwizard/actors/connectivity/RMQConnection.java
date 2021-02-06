@@ -114,7 +114,7 @@ public class RMQConnection implements Managed {
             }
         });
         channel = connection.createChannel();
-        environment.healthChecks().register(String.format("rmqconnection-%s", connection), healthcheck());
+        environment.healthChecks().register(String.format("rmqconnection-%s-%s", connection, UUID.randomUUID().toString()), healthcheck());
         log.info(String.format("Started RMQ connection [%s] ", name));
     }
 
